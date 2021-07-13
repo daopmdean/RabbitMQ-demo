@@ -14,8 +14,8 @@ namespace Sender
             };
 
             using var connection = factory.CreateConnection();
-            using (var channel = connection.CreateModel()) { 
-                
+            using var channel = connection.CreateModel();
+             
             channel.QueueDeclare(queue: "hello",
                 durable: false,
                 exclusive: false,
@@ -30,7 +30,7 @@ namespace Sender
                 basicProperties: null,
                 body: body);
             Console.WriteLine("[x] sent {0}", message);
-            }
+            
             Console.WriteLine("Press [enter] to exit.");
             Console.ReadLine();
         }
